@@ -1,0 +1,183 @@
+<html>
+<head>
+<script src="jquery.js"></script>
+<script>
+$(document).ready(function()
+{
+$("#start").hide();
+var myarray=[1,2,3,4,5,6,7,8];
+	$("#rand").click(function()
+		{
+		myarray=$.shuffle(myarray);
+		$("input:button[class=0]").val(myarray[0]);
+		$("input:button[class=1]").val(myarray[1]);
+		$("input:button[class=2]").val(myarray[2]);
+		$("input:button[class=3]").val(myarray[3]);
+		$("input:button[class=4]").val(myarray[4]);
+		$("input:button[class=5]").val(myarray[5]);
+		$("input:button[class=6]").val(myarray[6]);
+		$("input:button[class=7]").val(myarray[7]);
+		$("#start").show(50);
+		});
+    $("input:button[id=nbutton]").click(function()
+	    {
+		$("#start").hide(50);
+		var bn=$(this).attr("class");
+		alert(bn);
+		var val=$(this).val();
+		boxval1=$("input:button[class=0]").val();
+		boxval2=$("input:button[class=1]").val();
+		boxval3=$("input:button[class=2]").val();
+		boxval4=$("input:button[class=3]").val();
+		boxval5=$("input:button[class=4]").val();
+		boxval6=$("input:button[class=5]").val();
+		boxval7=$("input:button[class=6]").val();
+		boxval8=$("input:button[class=7]").val();
+		boxval9=$("input:button[class=8]").val();
+		//myarray[8]="-";
+		myarray[0]=boxval1
+		myarray[1]=boxval2
+		myarray[2]=boxval3
+		myarray[3]=boxval4
+		myarray[4]=boxval5
+		myarray[5]=boxval6
+		myarray[6]=boxval7
+		myarray[7]=boxval8
+		myarray[8]=boxval9
+		
+		newarray=myarray;
+		newarray=$.valswap(newarray,bn);
+	
+		//alert(myarray[8]);
+		//var randomizedarray=myarray;
+		//randomizedarray=$.valswap(randomizedarray,bn);	
+		
+	});		
+	
+    $.shuffle = function(myarray) 
+    {
+    for(
+      var j, x, i = myarray.length; i; 
+      j = parseInt(Math.random() * i),
+      x = myarray[--i], myarray[i] = myarray[j], myarray[j] = x
+    );
+    return myarray;
+    }
+	
+	$.valswap = function(newarray,bn)
+	{
+	bn=Number(bn);
+	for(i=0;i<=8;i++)
+	{
+	var a=bn-3;
+	var b=bn+3;
+	//alert("new array"+newarray[a]);
+	//alert("b"+b);
+	var c=bn-1;
+	var d=bn+1;
+	//alert("bn---"+bn);
+	//alert("here after bn");
+	if(i==bn)
+	{
+	alert("val----i"+i);
+	if (a>=0)
+	{
+	alert("a.=0"+a);
+	t=Number(newarray[a]);
+	if (t!=1 || t!=2 || t!=3 || t!=4 || t!=5 || t!=6 || t!=7 || t!=8 || t!=9)
+	{
+	alert("array"+newarray[a]);
+	alert("a val---"+ a);
+	alert("array i"+newarray[i]);
+	newarray[a]=newarray[i];
+	newarray[i-1]="-";
+	}
+	}
+	
+	else if (b>=0)
+	{
+	alert("myarray"+newarray[b]);
+	if(newarray[b]=="-")
+	{
+	alert("b val---"+ b)
+	newarray[b]=newarray[i];
+	newarray[i]="-";
+	}
+	}
+	
+	else if (c>=0)
+	{
+	if(newarray[c]=="-")
+	{
+	alert("c val---"+ c)
+	newarray[c]=newarray[i];
+	newarray[i]="-";
+	}
+	}
+	
+	else if (d>=0)
+	{
+	if(newarray[d]=="-")
+	{
+	alert("d val---"+ d)
+	newarray[d]=newarray[i];
+	newarray[i]="-";
+	}
+	}
+	    $("input:button[class=1]").val(newarray[0]);
+		$("input:button[class=2]").val(newarray[1]);
+		$("input:button[class=3]").val(newarray[2]);
+		$("input:button[class=4]").val(newarray[3]);
+		$("input:button[class=5]").val(newarray[4]);
+		$("input:button[class=6]").val(newarray[5]);
+		$("input:button[class=7]").val(newarray[6]);
+		$("input:button[class=8]").val(newarray[7]);
+		$("input:button[class=8]").val(newarray[8]);
+	}
+	}
+	}
+	});
+	/*$.valswap = function(randomizedarray) 
+    {
+    
+    return randomizedarray;
+    }*/
+
+ 
+
+</script>
+</head>
+
+<body>
+<table align="center" height="100px" width="100px">
+<tr align="center">
+<td> <input id="nbutton" class="0" type="button" value="1" name="nbutton"> </td>
+<td> <input id="nbutton" class="1" type="button" value="2" name="nbutton"> </td>
+<td> <input id="nbutton" class="2" type="button" value="3" name="nbutton"> </td>
+<tr>
+
+<tr align="center">
+<td> <input id="nbutton" class="3" type="button" value="4" name="nbutton"> </td>
+<td> <input id="nbutton" class="4" type="button" value="5" name="nbutton"> </td>
+<td> <input id="nbutton" class="5" type="button" value="6" name="nbutton"> </td>
+</tr>
+
+<tr align="center">
+<td> <input id="nbutton" class="6" type="button" value="7" name="nbutton"> </td>
+<td> <input id="nbutton" class="7" type="button" value="8" name="nbutton"> </td>
+<td> <input id="nbutton" class="8" type="button" value="-" name="nbutton"> </td>
+<tr>
+</table>
+<center>
+<input id="rand" class="rand" type="button" name="Randomize" value="Randomize">
+<p id="start"> Good to start the game </p>
+</center>
+</body>
+</html>
+
+
+
+
+
+
+
